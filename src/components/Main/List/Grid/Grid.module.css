@@ -1,0 +1,24 @@
+.gridContainer {
+  position: relative;
+  width: 100%;
+}
+
+.gridWrapper {
+  width: 1260px;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 1380px) {
+  .gridWrapper {
+    width: 845px;
+  }
+}
+
+@media (max-width: 930px) {
+  .gridWrapper {
+    width: 510px;
+  }
+}
