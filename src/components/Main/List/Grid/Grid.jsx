@@ -15,7 +15,7 @@ export const LAYOUTS = {
     { name: 'item-eight', x: 640, y: 440 },
     { name: 'item-nine', x: 960, y: 440 },
   ],
-  tablet: [
+  desktop: [
     { name: 'item-one', x: 0, y: 0 },
     { name: 'item-two', x: 0, y: 165 },
     { name: 'item-three', x: 0, y: 330 },
@@ -26,7 +26,7 @@ export const LAYOUTS = {
     { name: 'item-eight', x: 430, y: 330 },
     { name: 'item-nine', x: 650, y: 330 },
   ],
-  mobile: [
+  tablet: [
     { name: 'item-one', x: 0, y: 0 },
     { name: 'item-two', x: 0, y: 140 },
     { name: 'item-three', x: 0, y: 280 },
@@ -34,7 +34,7 @@ export const LAYOUTS = {
     { name: 'item-five', x: 350, y: 0 },
     { name: 'item-six', x: 350, y: 420 },
     { name: 'item-seven', x: 0, y: 420 },
-    { name: 'item-eight', x: 320, y: 220 },
+    { name: 'item-eight', x: 175, y: 140 },
     { name: 'item-nine', x: 175, y: 280 },
   ],
 };
@@ -57,8 +57,8 @@ export const Grid = ({ items }) => {
 
   const getLayoutForWindowWidth = () => {
     if (windowWidth > 1380) return LAYOUTS.default;
-    if (windowWidth <= 930) return LAYOUTS.mobile;
-    if (windowWidth <= 1380) return LAYOUTS.tablet;
+    if (windowWidth <= 930) return LAYOUTS.tablet;
+    if (windowWidth <= 1380) return LAYOUTS.desktop;
   };
 
   const currentLayout = getLayoutForWindowWidth();

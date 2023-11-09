@@ -1,21 +1,17 @@
-import { setToken } from '../api/token';
+import { setToken } from '../../api/token';
+import {
+  UPDATE_TOKEN,
+  DELETE_TOKEN,
+  TOKEN_REQUEST,
+  TOKEN_REQUEST_SUCCESS,
+  TOKEN_REQUEST_ERROR,
+} from './tokenAction';
 
 const initinalState = {
   token: '',
+  loading: false,
+  error: '',
 };
-
-const UPDATE_TOKEN = 'UPDATE_TOKEN';
-const DELETE_TOKEN = 'DELETE_TOKEN';
-
-const updateToken = (token) => ({
-  type: UPDATE_TOKEN,
-  token,
-});
-
-const deleteToken = () => ({
-  type: DELETE_TOKEN,
-  token: '',
-});
 
 const tokenMiddleware = store => next => (action) => {
   if (action.type === UPDATE_TOKEN) {
@@ -43,6 +39,28 @@ const tokenReducer = (state = initinalState, action) => {
         token: '',
       };
 
+    case TOKEN_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        error: '',
+      };
+
+    case TOKEN_REQUEST_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        token: action.token,
+        error: '',
+      };
+
+    case TOKEN_REQUEST_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+      };
+
     default:
       return state;
   }
@@ -50,7 +68,5 @@ const tokenReducer = (state = initinalState, action) => {
 
 export {
   tokenReducer,
-  updateToken,
-  deleteToken,
   tokenMiddleware,
 };

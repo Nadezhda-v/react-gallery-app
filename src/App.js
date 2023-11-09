@@ -1,6 +1,6 @@
 import Header from './components/Header';
 import Main from './components/Main';
-import { updateToken } from './store/tokenReducer';
+import { updateToken } from './store/token/tokenAction';
 import { getToken } from './api/token';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';

@@ -1,4 +1,4 @@
-import { tokenMiddleware, tokenReducer } from './tokenReducer';
+import { tokenMiddleware, tokenReducer } from './token/tokenReducer';
 import { authReducer } from './auth/authReducer';
 import { photosReducer } from './photos/photosSlice';
 import { configureStore } from '@reduxjs/toolkit';

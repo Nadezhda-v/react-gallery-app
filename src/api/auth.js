@@ -7,7 +7,7 @@ import {
 } from './constants';
 
 const params = {
-  access_key: ACCESS_KEY,
+  client_id: ACCESS_KEY,
   response_type: RESPONSE_TYPE,
   redirect_uri: REDIRECT_URI,
   scope: SCOPE_STRING,
