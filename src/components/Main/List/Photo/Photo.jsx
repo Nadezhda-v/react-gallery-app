@@ -17,15 +17,20 @@ export const Photo = ({ data, index }) => {
     likes,
   } = data;
 
+  console.log(data);
+
   return (
     <div key={id}
       className={`${style.photo} ${style[LAYOUTS.default[index].name]}`}
     >
       <Preview preview={`${preview}&w=700&dpr=2`} />
-      <div className={style.info}>
-        <Author author={author} />
+      <div className={style.wrapper}>
+        <div className={style.info}>
+          <Author author={author} />
+          <Date date={date} />
+        </div>
+
         <Likes likes={likes} />
-        <Date date={date} />
       </div>
     </div>
   );

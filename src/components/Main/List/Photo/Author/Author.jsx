@@ -7,7 +7,9 @@ export const Author = ({ author }) => {
     // profile_image: {
     // small: avatar,
     // },
-    portfolio_url: href,
+    links: {
+      self: href,
+    }
   } = author;
 
   return (

@@ -5,19 +5,14 @@ import { ACCESS_KEY, URL_API } from '../../api/constants';
 export const photosRequestAsync = createAsyncThunk(
   'photos/axios',
   (_, { getState }) => {
-    // let url;
+    const url = `${URL_API}photos?per_page=9`;
     const prevPhotos = getState().photos.data;
-    const token = getState().token.token;
     const after = getState().photos.after;
     const isLast = getState().photos.isLast;
 
     if (isLast) {
       return { data: prevPhotos, after };
     }
-
-    console.log('token', token);
-    const url = `${URL_API}photos?per_page=9`;
-
 
     return axios(`${url}`, {
       headers: {
