@@ -1,6 +1,7 @@
 .linkAuthor {
   font-size: 16px;
   transition: color 0.3s ease-in-out;
+  white-space: nowrap;
 }
 
 .linkAuthor:hover {

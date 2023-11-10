@@ -1,13 +1,7 @@
-.wrapper {
-  position: relative;
-}
-
 .raiting {
-  position: absolute;
   display: flex;
   align-items: center;
   gap: 2px;
-  top: 50px;
 }
 
 .likes {

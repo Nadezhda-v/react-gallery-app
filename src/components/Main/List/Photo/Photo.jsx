@@ -30,7 +30,9 @@ export const Photo = ({ data, index }) => {
           <Date date={date} />
         </div>
 
-        <Likes likes={likes} />
+        <div className={style.like}>
+          <Likes likes={likes} />
+        </div>
       </div>
     </div>
   );
