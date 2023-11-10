@@ -8,8 +8,8 @@ export const Likes = ({ likes }) => (
       <LikeIcon />
     </button>
 
-    {likes &&
-      <p className={style.count}>
+    {likes > 0 &&
+      <p className={style.count} data-text={likes}>
         {likes}
       </p>
     }

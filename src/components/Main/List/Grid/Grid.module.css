@@ -1,24 +1,14 @@
-.gridContainer {
-  position: relative;
-  width: 100%;
+.masonryGrid {
+  display: flex;
+  width: auto;
+  margin-left: -15px;
 }
 
-.gridWrapper {
-  width: 1260px;
-  position: absolute;
-  left: 50%;
-  top: 0;
-  transform: translate(-50%, -50%);
+.masonryGridColumn {
+  padding-left: 15px;
+  background-clip: padding-box;
 }
 
-@media (max-width: 1380px) {
-  .gridWrapper {
-    width: 845px;
-  }
-}
-
-@media (max-width: 930px) {
-  .gridWrapper {
-    width: 510px;
-  }
+.masonryGridColumn > div {
+  margin-bottom: 15px;
 }

@@ -4,9 +4,8 @@ import Preview from './Preview';
 import Author from './Author';
 import Likes from './Likes';
 import Date from './Date';
-import { LAYOUTS } from '../Grid/Grid';
 
-export const Photo = ({ data, index }) => {
+export const Photo = ({ data }) => {
   const {
     urls: {
       regular: preview,
@@ -17,11 +16,9 @@ export const Photo = ({ data, index }) => {
     likes,
   } = data;
 
-  console.log(data);
-
   return (
     <div key={id}
-      className={`${style.photo} ${style[LAYOUTS.default[index].name]}`}
+      className={style.photo}
     >
       <Preview preview={`${preview}&w=700&dpr=2`} />
       <div className={style.wrapper}>

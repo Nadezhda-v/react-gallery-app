@@ -1,8 +1,10 @@
 .header {
   padding: 15px 0;
+  background-color: var(--light-blue);
 }
 
 .сontainer {
   display: flex;
   justify-content: space-between;
+  gap: 30px;
 }

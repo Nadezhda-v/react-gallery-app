@@ -44,7 +44,7 @@ export const Auth = () => {
         <Preloader color={'#4a4d7a'} size={20} />
       ) : auth.name ? (
         <div className={style.user}>
-          <span>{auth.name}</span>
+          <span className={style.text}>{auth.name}</span>
           <img
             className={style.img}
             src={auth.image}

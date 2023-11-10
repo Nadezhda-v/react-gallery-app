@@ -5,9 +5,7 @@ const initialState = {
   loading: false,
   data: [],
   error: '',
-  after: '',
   isLast: false,
-  page: '',
   search: '',
 };
 
@@ -19,7 +17,6 @@ export const photosSlice = createSlice({
       state.loading = false;
       state.data = [];
       state.error = '';
-      state.after = '';
       state.isLast = false;
     },
   },
@@ -32,8 +29,6 @@ export const photosSlice = createSlice({
       state.loading = false;
       state.data = action.payload.data;
       state.error = '';
-      state.after = action.payload.after;
-      state.isLast = !action.payload.after;
     },
     [photosRequestAsync.rejected.type]: (state, action) => {
       state.loading = false;

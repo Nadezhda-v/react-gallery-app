@@ -19,3 +19,20 @@
   font-size: 20px;
   align-self: last baseline;
 }
+
+@media(max-width: 700px) {
+  .logo {
+    width: 20px;
+    height: 20px;
+  }
+
+  .text {
+    font-size: 16px;
+  }
+}
+
+@media(max-width: 500px) {
+  .text {
+    font-size: 12px;
+  }
+}
