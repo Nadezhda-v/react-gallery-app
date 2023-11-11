@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import { URL_API } from '../../api/constants';
 
 export const AUTH_REQUEST = 'AUTH_REQUEST';
 export const AUTH_REQUEST_SUCCESS = 'AUTH_REQUEST_SUCCESS';
@@ -26,7 +25,6 @@ export const authLogout = () => ({
 
 export const authRequestAsync = () => (dispatch, getState) => {
   const token = getState().token.token;
-  console.log('token', token);
 
   if (!token) return;
 
@@ -38,7 +36,6 @@ export const authRequestAsync = () => (dispatch, getState) => {
     },
   })
     .then(({ data }) => {
-      console.log(data);
       const name = data.first_name;
       const image = data.profile_image.small;
       const dataUser = { name, image };

@@ -20,6 +20,7 @@ export const Auth = () => {
   const [isLogoutVisible, setLogoutVisible] = useState(false);
 
   const handleLogout = () => {
+    setLogoutVisible(false);
     dispatch(deleteToken());
     clearAuth();
     navigate('/');
@@ -35,6 +36,7 @@ export const Auth = () => {
     if (token) {
       dispatch(authRequestAsync());
       setLogoutVisible(true);
+      navigate('/gallery');
     }
   }, []);
 

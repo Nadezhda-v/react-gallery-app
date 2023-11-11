@@ -47,7 +47,6 @@ export const tokenRequestAsync = () => (dispatch, getState) => {
     },
   })
     .then(({ data }) => {
-      console.log(data);
       const token = data.access_token;
       setToken(token);
       dispatch(tokenRequestSuccess(token));

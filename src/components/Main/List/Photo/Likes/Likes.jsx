@@ -4,7 +4,7 @@ import { ReactComponent as LikeIcon } from './img/like.svg';
 
 export const Likes = ({ likes }) => (
   <div className={style.raiting}>
-    <button className={style.likes} aria-label='Повысить рейтинг'>
+    <button className={style.likes} aria-label='Нравится'>
       <LikeIcon />
     </button>
 

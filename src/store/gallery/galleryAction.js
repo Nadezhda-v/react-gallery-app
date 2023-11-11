@@ -2,11 +2,11 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ACCESS_KEY, URL_API } from '../../api/constants';
 
-export const photosRequestAsync = createAsyncThunk(
-  'photos/axios',
+export const galleryRequestAsync = createAsyncThunk(
+  'gallery/axios',
   (page, { getState }) => {
-    const prevPhotos = getState().photos.data;
-    const isLast = getState().photos.isLast;
+    const prevPhotos = getState().gallery.data;
+    const isLast = getState().gallery.isLast;
     console.log('page: ', page);
 
     if (isLast) {

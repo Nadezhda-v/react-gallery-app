@@ -2,18 +2,18 @@ import style from './List.module.css';
 import Photo from './Photo';
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { photosRequestAsync } from '../../../store/photos/photosAction';
+import { galleryRequestAsync } from '../../../store/gallery/galleryAction';
 import { Outlet } from 'react-router-dom';
 import Grid from './Grid';
 
 export const List = () => {
-  const photos = useSelector((state) => state.photos.data);
+  const photos = useSelector((state) => state.gallery.data);
   const endList = useRef(null);
   const dispatch = useDispatch();
   const page = useRef(1);
 
   useEffect(() => {
-    dispatch(photosRequestAsync(page.current));
+    dispatch(galleryRequestAsync(page.current));
   }, []);
 
   useEffect(() => {
@@ -22,10 +22,10 @@ export const List = () => {
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
         page.current += 1;
-        dispatch(photosRequestAsync(page.current));
+        dispatch(galleryRequestAsync(page.current));
       }
     }, {
-      rootMargin: '150px',
+      rootMargin: '50px',
     });
 
     observer.observe(endList.current);
