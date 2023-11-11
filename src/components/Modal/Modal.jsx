@@ -1,6 +1,6 @@
 import style from './Modal.module.css';
 import ReactDOM from 'react-dom';
-// import { useState } from 'react';
+import { useEffect } from 'react';
 import { usePhoto } from '../../hooks/usePhoto';
 import PhotoDetail from './PhotoDetail';
 import Preloader from '../../UI/Preloader';
@@ -16,9 +16,14 @@ export const Modal = () => {
     navigate('/gallery');
   };
 
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => document.body.style.overflow = 'unset';
+  }, []);
+
   return ReactDOM.createPortal(
     <div className={style.overlay} >
-      <div className={style.modal}>
+      <div className={`${style.modal}`}>
         {status === 'loading' && (
           <Preloader color={'#5c5c5c'} size={40} />
         )}
@@ -29,10 +34,10 @@ export const Modal = () => {
         )}
         {status === 'loaded' && (
           <>
-            <PhotoDetail data={photoData} />
             <button className={style.back} onClick={handleButtonBack}>
-              <BackIcon />
+              <BackIcon className={style.svg} />
             </button>
+            <PhotoDetail data={photoData} />
           </>
         )}
       </div>

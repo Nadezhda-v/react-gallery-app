@@ -4,9 +4,6 @@ import PropTypes from 'prop-types';
 export const Author = ({ author }) => {
   const {
     name,
-    // profile_image: {
-    // small: avatar,
-    // },
     links: {
       self: href,
     }
