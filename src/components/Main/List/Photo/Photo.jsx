@@ -16,6 +16,7 @@ export const Photo = ({ data }) => {
     created_at: date,
     id,
     likes,
+    liked_by_user: liked,
   } = data;
 
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -51,7 +52,7 @@ export const Photo = ({ data }) => {
           </div>
 
           <div className={style.like}>
-            <Likes likes={likes} />
+            <Likes likes={likes} liked={liked} />
           </div>
         </div>
       )}

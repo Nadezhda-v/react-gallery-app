@@ -1,11 +1,11 @@
 import style from './Likes.module.css';
 import PropTypes from 'prop-types';
-import { ReactComponent as LikeIcon } from './img/like.svg';
+import { LikeIcon } from './icon/likeIcon';
 
-export const Likes = ({ likes }) => (
+export const Likes = ({ likes, liked }) => (
   <div className={style.raiting}>
     <button className={style.likes} aria-label='Нравится'>
-      <LikeIcon />
+      <LikeIcon fill={liked ? '#a52222' : 'white'} />
     </button>
 
     {likes > 0 &&
@@ -18,4 +18,5 @@ export const Likes = ({ likes }) => (
 
 Likes.propTypes = {
   likes: PropTypes.number,
+  liked: PropTypes.bool,
 };

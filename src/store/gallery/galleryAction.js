@@ -6,18 +6,18 @@ export const galleryRequestAsync = createAsyncThunk(
   'gallery/axios',
   (page, { getState }) => {
     const prevPhotos = getState().gallery.data;
-    const isLast = getState().gallery.isLast;
-    console.log('page: ', page);
+    const token = getState().token.token;
 
-    if (isLast) {
-      return { data: prevPhotos };
+    const headers = {
+      'Authorization': `Client-ID ${ACCESS_KEY}`,
+    };
+
+    if (token) {
+      headers.Authorization = `Bearer ${token}`;
     }
 
     return axios(`${URL_API}photos?per_page=30&page=${page}`, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Client-ID ${ACCESS_KEY}`,
-      },
+      headers,
     })
       .then(({ data }) => {
         let newPhotos = data;

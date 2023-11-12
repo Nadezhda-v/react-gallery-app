@@ -5,8 +5,6 @@ const initialState = {
   loading: false,
   data: [],
   error: '',
-  isLast: false,
-  search: '',
 };
 
 export const gallerySlice = createSlice({
