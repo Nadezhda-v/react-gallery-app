@@ -1,0 +1,17 @@
+.date {
+  font-size: 14px;
+  font-weight: 600;
+  color: #8f8f8f;
+}
+
+@media (max-width: 1380px) {
+  .date {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 930px) {
+  .date {
+    font-size: 10px;
+  }
+}

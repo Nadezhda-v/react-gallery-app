@@ -1,0 +1,15 @@
+.linkAuthor {
+  font-size: 16px;
+  transition: color 0.3s ease-in-out;
+  white-space: nowrap;
+}
+
+.linkAuthor:hover {
+  color: #2d2d2d;
+}
+
+@media (max-width: 1380px) {
+  .linkAuthor {
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,33 @@
+.raiting {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.likes {
+  background-color: transparent;
+  width: 25px;
+}
+
+.count {
+  color: #fff;
+  text-shadow: 1px 1px 2px #000;
+}
+
+@media (max-width: 1380px) {
+  .likes {
+    width: 20px;
+    top: 38px;
+  }
+
+  .raiting {
+    top: 36px;
+  }
+}
+
+@media (max-width: 930px) {
+  .raiting {
+    bottom: 5px;
+  }
+}
+
