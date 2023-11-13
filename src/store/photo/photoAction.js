@@ -14,7 +14,7 @@ export const photoRequestAsync = createAsyncThunk(
       headers.Authorization = `Bearer ${token}`;
     }
 
-    return axios(`${URL_API}/photos/${id}`, {
+    return axios(`${URL_API}photos/${id}`, {
       headers,
     })
       .then(({ data }) => {

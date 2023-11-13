@@ -11,6 +11,8 @@ import { useEffect, useState } from 'react';
 import { getCode } from '../../../api/token';
 import { tokenRequestAsync } from '../../../store/token/tokenAction';
 import { authRequestAsync } from '../../../store/auth/authAction';
+import { galleryRequestAsync } from '../../../store/gallery/galleryAction';
+import { gallerySlice } from '../../../store/gallery/gallerySlice';
 
 export const Auth = () => {
   const dispatch = useDispatch();
@@ -34,6 +36,8 @@ export const Auth = () => {
 
     if (token) {
       dispatch(authRequestAsync());
+      dispatch(gallerySlice.actions.updatePage());
+      dispatch(galleryRequestAsync());
       setLogoutVisible(true);
       navigate('/gallery');
     }

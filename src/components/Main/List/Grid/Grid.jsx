@@ -15,7 +15,7 @@ export const Grid = ({ items }) => {
       className={`'masonry-grid' ${style.masonryGrid}`}
       columnClassName={`'masonry-grid_column' ${style.masonryGridColumn}`}
     >
-      {items.map((item, index) => (
+      {items && items.map((item, index) => (
         <div key={index} className='masonry-item'>
           {item}
         </div>

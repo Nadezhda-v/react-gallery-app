@@ -7,6 +7,8 @@ import { likeRequestAsync } from '../../../store/like/likeAction';
 import { useState } from 'react';
 
 export const PhotoDetail = ({ data }) => {
+  if (!data) return;
+
   const {
     urls: {
       regular: preview,
@@ -31,20 +33,6 @@ export const PhotoDetail = ({ data }) => {
   const [likesCount, setLikesCount] = useState(likes);
 
   const handleLike = () => {
-    /* setIsLiked((prevIsLiked) => {
-      if (!prevIsLiked) {
-        dispatch(likeRequestAsync({ id, method: 'post' }));
-        setLikesCount((prevCount) => prevCount + 1);
-        setIsLiked(true);
-      } else {
-        dispatch(likeRequestAsync({ id, method: 'delete' }));
-        setLikesCount((prevCount) => prevCount - 1);
-        setIsLiked(false);
-      }
-
-      return !prevIsLiked;
-    });*/
-
     if (liked === false) {
       dispatch(likeRequestAsync({ id, method: 'post' }));
       setLikesCount((prevCount) => prevCount + 1);

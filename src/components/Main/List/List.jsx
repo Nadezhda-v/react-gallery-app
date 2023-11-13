@@ -10,19 +10,11 @@ export const List = () => {
   const photos = useSelector((state) => state.gallery.data);
   const endList = useRef(null);
   const dispatch = useDispatch();
-  const page = useRef(1);
 
   useEffect(() => {
-    dispatch(galleryRequestAsync(page.current));
-  }, []);
-
-  useEffect(() => {
-    if (!endList.current) return;
-
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
-        page.current += 1;
-        dispatch(galleryRequestAsync(page.current));
+        dispatch(galleryRequestAsync());
       }
     }, {
       rootMargin: '50px',

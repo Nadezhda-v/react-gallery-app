@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ACCESS_KEY, URL_API } from '../../api/constants';
+import { ACCESS_KEY } from '../../api/constants';
 
 export const galleryRequestAsync = createAsyncThunk(
   'gallery/axios',
-  (page, { getState }) => {
+  (_, { getState }) => {
     const prevPhotos = getState().gallery.data;
+    const page = getState().gallery.page;
     const token = getState().token.token;
 
     const headers = {
@@ -16,12 +17,15 @@ export const galleryRequestAsync = createAsyncThunk(
       headers.Authorization = `Bearer ${token}`;
     }
 
-    return axios(`${URL_API}photos?per_page=30&page=${page}`, {
+    return axios.get(`https://api.unsplash.com/photos?per_page=30&page=${page}`, {
       headers,
     })
       .then(({ data }) => {
+        console.log('data: ', data);
         let newPhotos = data;
-        newPhotos = [...prevPhotos, ...newPhotos];
+        if (page > 1) {
+          newPhotos = [...prevPhotos, ...newPhotos];
+        }
 
         return { data: newPhotos };
       })
