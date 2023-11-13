@@ -6,6 +6,8 @@ import Likes from './Likes';
 import Date from './Date';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { photoSlice } from '../../../../store/photo/photoSlice';
 
 export const Photo = ({ data }) => {
   const {
@@ -19,7 +21,27 @@ export const Photo = ({ data }) => {
     liked_by_user: liked,
   } = data;
 
+  const dispatch = useDispatch();
   const [imageLoaded, setImageLoaded] = useState(false);
+  const photos = useSelector((state) => state.photo.photos);
+  let likesCount = 0;
+  let isLiked = false;
+
+  useEffect(() => {
+    const setLike = () => {
+      dispatch(photoSlice.actions.setLike({ id, likes, isLiked: liked }));
+    };
+
+    setLike();
+  }, [id]);
+
+  const photo =
+    photos.find(photo => photo.id === id);
+
+  if (photo) {
+    isLiked = photo.isLiked;
+    likesCount = photo.likes;
+  }
 
   useEffect(() => {
     const img = new Image();
@@ -52,7 +74,7 @@ export const Photo = ({ data }) => {
           </div>
 
           <div className={style.like}>
-            <Likes likes={likes} liked={liked} />
+            <Likes likes={likesCount} liked={isLiked} />
           </div>
         </div>
       )}

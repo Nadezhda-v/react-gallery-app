@@ -21,7 +21,6 @@ export const galleryRequestAsync = createAsyncThunk(
       headers,
     })
       .then(({ data }) => {
-        console.log('data: ', data);
         let newPhotos = data;
         if (page > 1) {
           newPhotos = [...prevPhotos, ...newPhotos];

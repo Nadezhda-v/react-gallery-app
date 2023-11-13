@@ -2,9 +2,10 @@ import style from './PhotoDetail.module.css';
 import PropTypes from 'prop-types';
 import { formatDate } from '../../../utils/formatDate';
 import { LikeIcon } from './LikeIcon';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { likeRequestAsync } from '../../../store/like/likeAction';
-import { useState } from 'react';
+import { photoSlice } from '../../../store/photo/photoSlice';
+import { useEffect } from 'react';
 
 export const PhotoDetail = ({ data }) => {
   if (!data) return;
@@ -24,25 +25,21 @@ export const PhotoDetail = ({ data }) => {
     },
     created_at: date,
     id,
-    likes,
-    liked_by_user: liked,
   } = data;
 
   const dispatch = useDispatch();
-  const [isLiked, setIsLiked] = useState(liked);
-  const [likesCount, setLikesCount] = useState(likes);
+  const likes = useSelector((state) => state.photo.likes);
+  const isLiked = useSelector((state) => state.photo.isLiked);
 
   const handleLike = () => {
-    if (liked === false) {
-      dispatch(likeRequestAsync({ id, method: 'post' }));
-      setLikesCount((prevCount) => prevCount + 1);
-      setIsLiked(true);
-    } else {
-      dispatch(likeRequestAsync({ id, method: 'delete' }));
-      setLikesCount((prevCount) => prevCount - 1);
-      setIsLiked(false);
-    }
+    dispatch(photoSlice.actions.updateLike());
   };
+
+  useEffect(() => {
+    const method = !isLiked ? 'DELETE' : 'POST';
+    dispatch(likeRequestAsync({ id, method }));
+    dispatch(photoSlice.actions.setLike({ id, likes, isLiked }));
+  }, [likes, isLiked]);
 
   return (
     <div className={style.container}>
@@ -81,7 +78,7 @@ export const PhotoDetail = ({ data }) => {
 
             {likes > 0 &&
               <p className={style.count}>
-                {likesCount}
+                {likes}
               </p>
             }
           </div>
