@@ -30,8 +30,10 @@ export const PhotoDetail = ({ data }) => {
   const dispatch = useDispatch();
   const likes = useSelector((state) => state.photo.likes);
   const isLiked = useSelector((state) => state.photo.isLiked);
+  const token = useSelector(state => state.token.token);
 
   const handleLike = () => {
+    if (!token) return;
     dispatch(photoSlice.actions.updateLike());
   };
 

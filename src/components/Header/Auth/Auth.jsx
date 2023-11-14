@@ -20,6 +20,7 @@ export const Auth = () => {
   const navigate = useNavigate();
   const [isLogoutVisible, setLogoutVisible] = useState(false);
   const token = useSelector(state => state.token.token);
+  const code = getCode();
 
   const handleLogout = () => {
     setLogoutVisible(false);
@@ -29,7 +30,6 @@ export const Auth = () => {
   };
 
   useEffect(() => {
-    const code = getCode();
     if (code) {
       dispatch(tokenRequestAsync());
     }
@@ -41,7 +41,7 @@ export const Auth = () => {
       setLogoutVisible(true);
       navigate('/gallery');
     }
-  }, [token]);
+  }, [code, token]);
 
   return (
     <div className={style.container}>
